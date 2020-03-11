@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="bottom"
+    android:orientation="vertical"
+    android:background="@drawable/background"
+    tools:context=".Info3Activity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="30dp"
+        android:layout_marginBottom="60dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp">
+
+            <Button
+                android:id="@+id/sound1"
+                android:layout_width="170dp"
+                android:layout_height="170dp"
+                android:background="@drawable/sound_button1"
+                android:onClick="soundPlay"/>
+
+            <Button
+                android:id="@+id/sound2"
+                android:layout_width="170dp"
+                android:layout_height="170dp"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/sound_button2"
+                android:onClick="soundPlay"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+            <Button
+                android:id="@+id/sound3"
+                android:layout_width="170dp"
+                android:layout_height="170dp"
+                android:background="@drawable/sound_button3"
+                android:onClick="soundPlay"/>
+
+            <Button
+                android:id="@+id/sound4"
+                android:layout_width="170dp"
+                android:layout_height="170dp"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/sound_button4"
+                android:onClick="soundPlay"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <SeekBar
+            android:id="@+id/playBar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#B3000000" />
+
+
+    </LinearLayout>
+</LinearLayout>
