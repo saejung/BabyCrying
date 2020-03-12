@@ -2,18 +2,28 @@ package com.bumil.babycryingapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewTreeObserver;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.SeekBar;
 
 public class Info3Activity extends AppCompatActivity {
 
-    SeekBar seekBar;
     MediaPlayer mediaPlayer;
+
+    private LinearLayout playLayout;
+    private SeekBar volumeBar;
+    private ImageButton volumeBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,8 +31,15 @@ public class Info3Activity extends AppCompatActivity {
         setContentView(R.layout.activity_info3);
     }
 
+    //버튼에 따라 다른 소리 재생
     public void soundPlay(View view) {
         //롤리팝 이상 버전일 경우
+
+        this.playLayout = (LinearLayout) findViewById(R.id.playLayout);
+        this.volumeBtn = (ImageButton) findViewById(R.id.volumeBtn);
+
+        playLayout.setVisibility(View.VISIBLE);
+        volumeBtn.setVisibility(View.VISIBLE);
 
         switch (view.getId()){
             case R.id.sound1:
@@ -48,5 +65,11 @@ public class Info3Activity extends AppCompatActivity {
             mediaPlayer.release();
             mediaPlayer = null;
         }
+    }
+
+    //스피커 버튼 클릭시 볼륨조절 화면 뜨기
+    public void volumeCtl(View view) {
+        this.volumeBar = (SeekBar) findViewById(R.id.volumeBar);
+        volumeBar.setVisibility(View.VISIBLE);
     }
 }
