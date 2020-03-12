@@ -11,6 +11,7 @@ import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.ImageButton;
@@ -19,7 +20,8 @@ import android.widget.SeekBar;
 
 public class Info3Activity extends AppCompatActivity {
 
-    MediaPlayer mediaPlayer;
+    MediaPlayer mp;
+    AudioManager audio;
 
     private LinearLayout playLayout;
     private SeekBar volumeBar;
@@ -37,14 +39,24 @@ public class Info3Activity extends AppCompatActivity {
 
         this.playLayout = (LinearLayout) findViewById(R.id.playLayout);
         this.volumeBtn = (ImageButton) findViewById(R.id.volumeBtn);
+        this.volumeBar = (SeekBar) findViewById(R.id.volumeBar);
 
         playLayout.setVisibility(View.VISIBLE);
         volumeBtn.setVisibility(View.VISIBLE);
 
+        audio = (AudioManager) getSystemService(AUDIO_SERVICE);
+
+        int aMax = audio.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+        int aVol = audio.getStreamVolume(AudioManager.STREAM_MUSIC);
+
+        volumeBar.setMax(aMax);
+        volumeBar.setProgress(aVol);
+
+
         switch (view.getId()){
             case R.id.sound1:
-                mediaPlayer = MediaPlayer.create(Info3Activity.this, R.raw.tv_end);
-                mediaPlayer.start();
+                mp = MediaPlayer.create(Info3Activity.this, R.raw.tv_end);
+                mp.start();
                 break;
             case R.id.sound2:
                 break;
@@ -61,9 +73,9 @@ public class Info3Activity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         // MediaPlayer 해지
-        if(mediaPlayer != null) {
-            mediaPlayer.release();
-            mediaPlayer = null;
+        if(mp != null) {
+            mp.release();
+            mp = null;
         }
     }
 
