@@ -86,22 +86,39 @@
                 android:onClick="volumeCtl"
                 android:background="#99000000"/>
 
-            <SeekBar
-                android:id="@+id/volumeBar"
-                android:visibility="invisible"
+            <LinearLayout
+                android:id="@+id/volumeBarLayout"
                 android:background="#99000000"
-                android:progressDrawable="@drawable/seekbar"
-                android:thumb="@drawable/thumb"
+                android:visibility="invisible"
                 android:layout_width="0dp"
                 android:layout_weight="8.5"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="1dip"
-                android:paddingTop="5dip"
-                android:paddingBottom="5dip"
-                android:paddingLeft="17dip"
-                android:paddingRight="17dip"
-                android:splitTrack="false"
-                android:progress="12"/>
+                android:orientation="vertical">
+
+                <SeekBar
+                    android:id="@+id/volumeBar"
+                    android:progressDrawable="@drawable/seekbar"
+                    android:thumb="@drawable/thumb"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="7"
+                    android:splitTrack="false"
+                    android:paddingTop="5dip"
+                    android:paddingLeft="17dip"
+                    android:paddingRight="17dip"
+                    android:progress="12"/>
+
+                <TextView
+                    android:id="@+id/volumeText"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
 
         </LinearLayout>
 
@@ -123,8 +140,7 @@
                 android:paddingBottom="5dip"
                 android:paddingLeft="17dip"
                 android:paddingRight="17dip"
-                android:splitTrack="false"
-                android:progress="12"/>
+                android:splitTrack="false" />
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
